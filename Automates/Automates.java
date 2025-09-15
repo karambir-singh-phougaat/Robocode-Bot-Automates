@@ -18,7 +18,8 @@ public class Automates extends Bot {
     @Override
     public void run() {
         turnRadarRight(360);
-        // Repeat while the bot is running
+
+        //goToTopRightCorner();
 
         while (isRunning()) {
             setBodyColor(Color.BROWN);
@@ -38,10 +39,52 @@ public class Automates extends Bot {
         }
     }
 
+    // Helper method to move to top-right corner
+    private void goToTopRightCorner() {
+        int battlefieldWidth = getArenaWidth();
+        int battlefieldHeight = getArenaHeight();
+
+        double x = getX();
+        double y = getY();
+
+        // Move horizontally to right edge
+        if (x < battlefieldWidth) {
+            double angle = 0 - getDirection(); // face east
+            turnLeft(normalizeAngle(angle));
+            forward(battlefieldWidth - x);
+        }
+
+        // Move vertically to top edge
+        if (y < battlefieldHeight) {
+            double angle = 90 - getDirection(); // face north
+            turnLeft(normalizeAngle(angle));
+            forward(battlefieldHeight - y);
+        }
+
+        // Face south after reaching corner
+        turnLeft(normalizeAngle(180 - getDirection()));
+    }
+
+    // Normalize angle to range [-180, 180]
+    private double normalizeAngle(double angle) {
+        while (angle > 180) angle -= 360;
+        while (angle < -180) angle += 360;
+        return angle;
+    }
+
+
+
+
+
+
+
+
+
+
     // We saw another bot -> fire!
     @Override
     public void onScannedBot(ScannedBotEvent e) {
-        fire(2);
+        fire(5);
     }
 
     // We were hit by a bullet -> turn perpendicular to the bullet
