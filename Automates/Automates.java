@@ -1,5 +1,6 @@
 import dev.robocode.tankroyale.botapi.*;
 import dev.robocode.tankroyale.botapi.events.*;
+import dev.robocode.tankroyale.botapi.graphics.Color;
 
 public class Automates extends Bot {
 
@@ -16,13 +17,15 @@ public class Automates extends Bot {
     // Called when a new round is started -> initialize and do some movement
     @Override
     public void run() {
+
         turnRadarRight(360);
         // Repeat while the bot is running
 
         while (isRunning()) {
+            setBodyColor(Color.BROWN);
+            setGunColor(Color.RED);
+            setBulletColor(Color.RED);
 
-            /*turnGunRight(360);
-            turnGunLeft(360);*/
 
             forward(100);
             turnGunRight(360);
@@ -35,6 +38,8 @@ public class Automates extends Bot {
             turnGunLeft(360);
         }
     }
+
+
 
     // We saw another bot -> fire!
     @Override
