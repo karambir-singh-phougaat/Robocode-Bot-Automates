@@ -20,6 +20,10 @@ public class Automates extends Bot {
         // Repeat while the bot is running
 
         while (isRunning()) {
+
+            /*turnGunRight(360);
+            turnGunLeft(360);*/
+
             forward(100);
             turnGunRight(360);
             back(150);
