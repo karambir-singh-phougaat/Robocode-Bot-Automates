@@ -17,7 +17,6 @@ public class Automates extends Bot {
     // Called when a new round is started -> initialize and do some movement
     @Override
     public void run() {
-
         turnRadarRight(360);
         // Repeat while the bot is running
 
@@ -39,12 +38,10 @@ public class Automates extends Bot {
         }
     }
 
-
-
     // We saw another bot -> fire!
     @Override
     public void onScannedBot(ScannedBotEvent e) {
-        fire(5);
+        fire(2);
     }
 
     // We were hit by a bullet -> turn perpendicular to the bullet
