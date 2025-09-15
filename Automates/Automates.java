@@ -1,10 +1,7 @@
 import dev.robocode.tankroyale.botapi.*;
 import dev.robocode.tankroyale.botapi.events.*;
-import java.util.Random;
 
 public class Automates extends Bot {
-
-    private final Random random = new Random();
 
     // The main method starts our bot
     public static void main(String[] args) {
@@ -22,35 +19,18 @@ public class Automates extends Bot {
         turnRadarRight(360);
         // Repeat while the bot is running
         while (isRunning()) {
-            moveRandomly();
-            turnRadarRight(30);
+            forward(100);
+            turnGunRight(360);
 
-            moveRandomly();
-            turnRadarLeft(50);
+            back(150);
+            turnGunLeft(360);
         }
     }
-
-    /** Random zig-zag movement to be less predictable */
-
-    private void moveRandomly() {
-        if (random.nextBoolean()) {
-            forward(80 + random.nextInt(60));
-        } else {
-            back(80 + random.nextInt(60));
-        }
-
-        if (random.nextBoolean()) {
-            turnLeft(30 + random.nextInt(40));
-        } else {
-            turnRight(30 + random.nextInt(40));
-        }
-    }
-
 
     // We saw another bot -> fire!
     @Override
     public void onScannedBot(ScannedBotEvent e) {
-        fire(25);
+        fire(5);
     }
 
     // We were hit by a bullet -> turn perpendicular to the bullet
@@ -61,5 +41,6 @@ public class Automates extends Bot {
 
         // Turn 90 degrees to the bullet direction based on the bearing
         turnLeft(90 - bearing);
+        forward(200);
     }
 }
