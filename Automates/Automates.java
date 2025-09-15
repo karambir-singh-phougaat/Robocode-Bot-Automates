@@ -21,9 +21,18 @@ public class Automates extends Bot {
         while (isRunning()) {
             forward(100);
             turnGunRight(360);
-
             back(150);
             turnGunLeft(360);
+
+            forward(50);
+            turnGunRight(360);
+            back(70);
+            turnGunLeft(360);
+
+            /*forward(150);
+            turnGunRight(360);
+            back(220);
+            turnGunLeft(360);*/
         }
     }
 
@@ -37,10 +46,16 @@ public class Automates extends Bot {
     @Override
     public void onHitByBullet(HitByBulletEvent e) {
         // Calculate the bearing to the direction of the bullet
-        var bearing = calcBearing(e.getBullet().getDirection());
+        //var bearing = calcBearing(e.getBullet().getDirection());
+
+        double move = Math.random() * 200 + 100;
+        if(Math.random()>0.5)
+            forward(move);
+        else
+            back(move);
 
         // Turn 90 degrees to the bullet direction based on the bearing
-        turnLeft(90 - bearing);
-        forward(200);
+        /*turnLeft(90 - bearing);
+        forward(120);*/
     }
 }
