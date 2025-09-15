@@ -1,0 +1,15 @@
+{
+  "name": "Automates",
+  "version": "1.0",
+  "authors": [
+    "Karambir Singh"
+  ],
+  "description": "Automates Bot",
+  "homepage": "",
+  "countryCodes": [
+    "uk",
+    "ind"
+  ],
+  "platform": "JVM",
+  "programmingLang": "Java 18"
+}
